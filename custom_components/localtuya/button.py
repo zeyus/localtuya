@@ -3,9 +3,15 @@
 import logging
 from functools import partial
 
-from homeassistant.components.button import DOMAIN, ButtonEntity
+from homeassistant.components.button import (
+    DOMAIN,
+    PLATFORM_SCHEMA,  # noqa: F401
+    ButtonEntity,
+)
 
 from .entity import LocalTuyaEntity, async_setup_entry
+
+from .const import CONF_PASSIVE_ENTITY  # noqa: F401
 
 
 _LOGGER = logging.getLogger(__name__)

@@ -21,6 +21,7 @@ from homeassistant.components.remote import (
     DOMAIN,
     RemoteEntity,
     RemoteEntityFeature,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.components import persistent_notification
 from homeassistant.const import STATE_OFF

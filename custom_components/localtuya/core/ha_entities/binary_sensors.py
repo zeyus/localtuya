@@ -6,7 +6,12 @@ Credits: official HA Tuya integration.
 Modified by: xZetsubou
 """
 
-from .base import DPCode, LocalTuyaEntity, EntityCategory
+from .base import (
+    DPCode,
+    CONF_DEVICE_CLASS,  # noqa: F401
+    LocalTuyaEntity,
+    EntityCategory,
+)
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 
 CONF_STATE_ON = "state_on"

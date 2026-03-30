@@ -14,7 +14,6 @@ from homeassistant.const import (
     CONF_FRIENDLY_NAME,
     CONF_HOST,
     CONF_ICON,
-    CONF_ID,
     CONF_PLATFORM,
     EntityCategory,
     STATE_UNAVAILABLE,
@@ -42,6 +41,7 @@ from .const import (
     DOMAIN,
     RESTORE_STATES,
     DeviceConfig,
+    CONF_ID,  # noqa: F401
 )
 
 _LOGGER = logging.getLogger(__name__)

@@ -2,7 +2,6 @@
 Helpers functions for HASS-LocalTuya.
 """
 
-# import asyncio
 import logging
 import os.path
 from enum import Enum

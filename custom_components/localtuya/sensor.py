@@ -13,6 +13,7 @@ from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
     SensorStateClass,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.const import (
     CONF_DEVICE_CLASS,

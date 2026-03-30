@@ -19,6 +19,7 @@ from homeassistant.components.light import (
     DOMAIN,
     LightEntity,
     LightEntityFeature,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.const import CONF_BRIGHTNESS, CONF_COLOR_TEMP, CONF_SCENE
 

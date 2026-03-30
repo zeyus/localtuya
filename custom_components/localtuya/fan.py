@@ -13,6 +13,7 @@ from homeassistant.components.fan import (
     DOMAIN,
     FanEntityFeature,
     FanEntity,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.util.percentage import (
     int_states_in_range,

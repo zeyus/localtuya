@@ -5,7 +5,7 @@ Credits: official HA Tuya integration.
 Modified by: xZetsubou
 """
 
-from .base import DPCode, LocalTuyaEntity
+from .base import DPCode, LocalTuyaEntity, CONF_DEVICE_CLASS  # noqa: F401
 
 # All descriptions can be found here:
 # https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq

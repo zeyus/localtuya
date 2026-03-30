@@ -12,16 +12,17 @@ from homeassistant.components.water_heater import (
     DOMAIN,
     WaterHeaterEntity,
     WaterHeaterEntityFeature,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 
-# from homeassistant.components.water_heater.const import (
-#     STATE_ECO,
-#     STATE_ELECTRIC,
-#     STATE_PERFORMANCE,
-#     STATE_HIGH_DEMAND,
-#     STATE_HEAT_PUMP,
-#     STATE_GAS,
-# )
+from homeassistant.components.water_heater.const import (
+    STATE_ECO,  # noqa: F401
+    STATE_ELECTRIC,  # noqa: F401
+    STATE_PERFORMANCE,  # noqa: F401
+    STATE_HIGH_DEMAND,  # noqa: F401
+    STATE_HEAT_PUMP,  # noqa: F401
+    STATE_GAS,  # noqa: F401
+)
 from homeassistant.const import (
     ATTR_TEMPERATURE,
     CONF_TEMPERATURE_UNIT,

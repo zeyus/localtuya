@@ -5,7 +5,7 @@ Credits: official HA Tuya integration.
 Modified by: xZetsubou
 """
 
-from .base import DPCode, LocalTuyaEntity
+from .base import DPCode, LocalTuyaEntity, CONF_DEVICE_CLASS  # noqa: F401
 from homeassistant.components.cover import CoverDeviceClass
 
 # from const.py this is temporarily.

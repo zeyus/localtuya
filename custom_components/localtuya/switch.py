@@ -8,8 +8,9 @@ import voluptuous as vol
 from homeassistant.components.switch import (
     DOMAIN,
     SwitchEntity,
-    # DEVICE_CLASSES_SCHEMA,
+    DEVICE_CLASSES_SCHEMA,  # noqa: F401
     SwitchDeviceClass,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.const import CONF_DEVICE_CLASS
 

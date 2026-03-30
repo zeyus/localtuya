@@ -11,7 +11,12 @@ from typing import Any, NamedTuple
 
 from homeassistant.core import HomeAssistant, CALLBACK_TYPE, callback
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_DEVICES, CONF_HOST, CONF_DEVICE_ID
+from homeassistant.const import (
+    CONF_DEVICES,
+    CONF_HOST,
+    CONF_ID,  # noqa: F401
+    CONF_DEVICE_ID,
+)
 from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.dispatcher import (
     async_dispatcher_connect,

@@ -8,7 +8,7 @@ Modified by: xZetsubou
 from .base import (
     DPCode,
     LocalTuyaEntity,
-    # CONF_DEVICE_CLASS,
+    CONF_DEVICE_CLASS,  # noqa: F401
     # EntityCategory,
     CLOUD_VALUE,
 )

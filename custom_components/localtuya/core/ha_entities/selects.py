@@ -11,6 +11,7 @@ from .base import (
     LocalTuyaEntity,
     EntityCategory,
     CLOUD_VALUE,
+    CONF_DEVICE_CLASS,  # noqa: F401
 )
 
 # from const.py this is temporarily.

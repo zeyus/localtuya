@@ -12,6 +12,7 @@ from homeassistant.components.climate import (
     DEFAULT_MAX_TEMP,
     DEFAULT_MIN_TEMP,
     DOMAIN,
+    PLATFORM_SCHEMA,  # noqa: F401
     ClimateEntity,
 )
 from homeassistant.components.climate.const import (

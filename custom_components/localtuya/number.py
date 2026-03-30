@@ -4,7 +4,12 @@ import logging
 from functools import partial
 
 import voluptuous as vol
-from homeassistant.components.number import DOMAIN, NumberEntity, DEVICE_CLASSES_SCHEMA
+from homeassistant.components.number import (
+    DOMAIN,
+    NumberEntity,
+    DEVICE_CLASSES_SCHEMA,
+    PLATFORM_SCHEMA,  # noqa: F401
+)
 from homeassistant.const import (
     CONF_DEVICE_CLASS,
     STATE_UNKNOWN,

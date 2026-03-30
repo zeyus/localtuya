@@ -7,7 +7,7 @@ from homeassistant.const import (
     CONF_ENTITIES,
     CONF_FRIENDLY_NAME,
     CONF_HOST,
-    # CONF_ID,
+    CONF_ID,  # noqa: F401
     CONF_SCAN_INTERVAL,
     EntityCategory,
     Platform,

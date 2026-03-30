@@ -6,7 +6,11 @@ from typing import Any
 from .config_flow import col_to_select
 
 import voluptuous as vol
-from homeassistant.components.lock import DOMAIN, LockEntity
+from homeassistant.components.lock import (
+    DOMAIN,
+    PLATFORM_SCHEMA,  # noqa: F401
+    LockEntity,
+)
 from .entity import LocalTuyaEntity, async_setup_entry
 
 from .const import CONF_JAMMED_DP, CONF_LOCK_STATE_DP

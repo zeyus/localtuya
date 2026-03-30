@@ -10,6 +10,7 @@ from homeassistant.components.vacuum import (
     StateVacuumEntity,
     VacuumActivity,
     VacuumEntityFeature,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 
 from .entity import LocalTuyaEntity, async_setup_entry

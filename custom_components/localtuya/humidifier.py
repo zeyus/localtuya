@@ -12,6 +12,7 @@ from homeassistant.components.humidifier import (
     DEVICE_CLASSES_SCHEMA,
     HumidifierEntity,
     HumidifierEntityFeature,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.components.humidifier.const import (
     ATTR_MAX_HUMIDITY,

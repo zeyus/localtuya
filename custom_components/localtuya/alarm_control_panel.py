@@ -8,6 +8,7 @@ import voluptuous as vol
 from homeassistant.helpers.selector import ObjectSelector
 from homeassistant.components.alarm_control_panel import (
     DOMAIN,
+    PLATFORM_SCHEMA,  # noqa: F401
     AlarmControlPanelEntity,
     CodeFormat,
     AlarmControlPanelEntityFeature,
@@ -15,7 +16,11 @@ from homeassistant.components.alarm_control_panel import (
 )
 
 from .entity import LocalTuyaEntity, async_setup_entry
-from .const import CONF_ALARM_SUPPORTED_STATES, DictSelector
+from .const import (
+    CONF_ALARM_SUPPORTED_STATES,
+    CONF_PASSIVE_ENTITY,  # noqa: F401
+    DictSelector,
+)
 
 _LOGGER = logging.getLogger(__name__)
 

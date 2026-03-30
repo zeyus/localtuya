@@ -12,6 +12,7 @@ from homeassistant.components.cover import (
     CoverEntityFeature,
     CoverEntity,
     DEVICE_CLASSES_SCHEMA,
+    PLATFORM_SCHEMA,  # noqa: F401
 )
 from homeassistant.const import CONF_DEVICE_CLASS
 from .config_flow import col_to_select

@@ -5,6 +5,7 @@ import voluptuous as vol
 
 from functools import partial
 
+from homeassistant.components.binary_sensor import PLATFORM_SCHEMA  # noqa: F401
 from homeassistant.helpers.selector import NumberSelector, NumberSelectorConfig
 from homeassistant.helpers.event import async_call_later
 from homeassistant.core import callback, CALLBACK_TYPE
