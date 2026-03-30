@@ -7,10 +7,10 @@ from homeassistant.const import (
     CONF_ICON,
     CONF_ENTITY_CATEGORY,
     CONF_DEVICE_CLASS,
-    Platform,
-    EntityCategory,
+    Platform,  # noqa: F401
+    EntityCategory,  # noqa: F401
 )
-from ...const import CONF_CLEAN_AREA_DP, CONF_DPS_STRINGS, CONF_STATE_CLASS
+from ...const import CONF_STATE_CLASS, CONF_DPS_STRINGS  # noqa: F401
 
 
 # Obtain values from cloud data.

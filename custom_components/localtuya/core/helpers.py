@@ -2,7 +2,7 @@
 Helpers functions for HASS-LocalTuya.
 """
 
-import asyncio
+# import asyncio
 import logging
 import os.path
 from enum import Enum
@@ -24,7 +24,6 @@ _LOGGER = logging.getLogger(__name__)
 #          Templates          #
 ###############################
 class templates:
-
     def yaml_dump(config, fname: str | None = None) -> JSON_TYPE:
         """Save yaml config."""
         try:
@@ -72,7 +71,7 @@ class templates:
         for cfg in config[CONF_ENTITIES]:
             # Special case device_classes
             for k, v in cfg.items():
-                if not type(v) is str and isinstance(v, Enum):
+                if type(v) is not str and isinstance(v, Enum):
                     cfg[k] = v.value
 
             ents = {cfg[CONF_PLATFORM]: cfg}
@@ -91,7 +90,7 @@ class templates:
 ##       config flows         ##
 ################################
 
-from ..const import CONF_LOCAL_KEY, CONF_NODE_ID
+from ..const import CONF_LOCAL_KEY, CONF_NODE_ID  # noqa: E402
 
 GATEWAY = NamedTuple("Gateway", [("id", str), ("data", dict)])
 
@@ -113,4 +112,4 @@ def get_gateway_by_deviceid(device_id: str, cloud_data: dict) -> GATEWAY:
 ###############################
 #    Auto configure device    #
 ###############################
-from .ha_entities import gen_localtuya_entities
+from .ha_entities import gen_localtuya_entities  # noqa: E402, F401

@@ -1,9 +1,9 @@
 """
-    This a file contains available tuya data
-    https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
+This a file contains available tuya data
+https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
 
-    Credits: official HA Tuya integration.
-    Modified by: xZetsubou
+Credits: official HA Tuya integration.
+Modified by: xZetsubou
 """
 
 from homeassistant.components.water_heater import (
@@ -14,8 +14,6 @@ from homeassistant.const import CONF_TEMPERATURE_UNIT
 
 from .base import DPCode, LocalTuyaEntity, CLOUD_VALUE
 from ...const import (
-    CONF_TARGET_TEMPERATURE_LOW_DP,
-    CONF_TARGET_TEMPERATURE_HIGH_DP,
     CONF_PRECISION,
     CONF_TARGET_PRECISION,
     CONF_CURRENT_TEMPERATURE_DP,

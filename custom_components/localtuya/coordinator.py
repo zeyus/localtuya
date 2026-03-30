@@ -9,10 +9,10 @@ from datetime import timedelta
 from typing import Any, NamedTuple
 
 
-from homeassistant.core import HomeAssistant, CALLBACK_TYPE, callback, State
+from homeassistant.core import HomeAssistant, CALLBACK_TYPE, callback
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_ID, CONF_DEVICES, CONF_HOST, CONF_DEVICE_ID
-from homeassistant.helpers.event import async_track_time_interval, async_call_later
+from homeassistant.const import CONF_DEVICES, CONF_HOST, CONF_DEVICE_ID
+from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.dispatcher import (
     async_dispatcher_connect,
     dispatcher_send,
@@ -262,7 +262,7 @@ class TuyaDevice(TuyaListener, ContextualLogger):
                 self.exception(f"Handshake with {host} failed: due to {type(e)}: {e}")
                 await self.abort_connect()
                 update_localkey = True
-            except asyncio.CancelledError as e:
+            except asyncio.CancelledError:
                 await self.abort_connect()
                 self._task_connect = None
             except Exception as e:
@@ -273,7 +273,7 @@ class TuyaDevice(TuyaListener, ContextualLogger):
                     if self.is_subdevice or "key" in str(e):
                         # TODO: Add exceptions for pytuya.
                         update_localkey = True
-            except:
+            except Exception:
                 if self._fake_gateway:
                     self.warning(f"Failed to use {name} as gateway.")
                     await self.abort_connect()
@@ -395,7 +395,7 @@ class TuyaDevice(TuyaListener, ContextualLogger):
             except (TimeoutError, Exception) as ex:
                 self.debug(f"Failed to set values {payload} --> {ex}", force=True)
         elif not self.connected:
-            self.error(f"Device is not connected.")
+            self.error("Device is not connected.")
 
     async def set_dp(self, state, dp_index):
         """Change value of a DP of the Tuya device."""
@@ -509,7 +509,7 @@ class TuyaDevice(TuyaListener, ContextualLogger):
         if self._entry.data.get(CONF_NO_CLOUD, True):
             return self.info("Ensure that localkey hasn't changed and it's correct")
 
-        self.info(f"Trying to update local-key...")
+        self.info("Trying to update local-key...")
         dev_id = self._device_config.id
         cloud_api = self._hass_entry.cloud_data
         await cloud_api.async_get_devices_list(force_update=True)
@@ -544,7 +544,7 @@ class TuyaDevice(TuyaListener, ContextualLogger):
             new_data[CONF_DEVICES][dev_id][CONF_LOCAL_KEY] = self.local_key
             new_data[ATTR_UPDATED_AT] = str(int(time.time() * 1000))
             self.hass.config_entries.async_update_entry(self._entry, data=new_data)
-            self.info(f"Local-key has been updated")
+            self.info("Local-key has been updated")
 
     def filter_subdevices(self):
         """Remove closed subdevices that are closed."""

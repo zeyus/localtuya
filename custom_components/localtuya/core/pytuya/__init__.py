@@ -38,7 +38,8 @@ Credits
 import os
 import asyncio
 import errno
-import base64
+
+# import base64
 import binascii
 import hmac
 import json
@@ -57,7 +58,7 @@ from .const import (
     CMDType,
     SubdeviceState,
     Affix,
-    TuyaHeader,
+    # TuyaHeader,
     TuyaMessage,
     MessagePayload,
     MessagesFormat,
@@ -319,7 +320,6 @@ class MessageDispatcher(ContextualLogger):
         suffixes_bin = {suffix.bin for suffix in Affix.suffixes}
         header_len = struct.calcsize(MessagesFormat.END_55AA)
         while self.buffer:
-
             # Check if enough data for measage header
             if len(self.buffer) < header_len:
                 break
@@ -391,7 +391,7 @@ class MessageDispatcher(ContextualLogger):
         elif msg.cmd == CMDType.LAN_EXT_STREAM:
             self._release_listener(self.SUB_DEVICE_QUERY_SEQNO, msg)
             if msg.payload:
-                self.debug(f"Got Sub-devices status update")
+                self.debug("Got Sub-devices status update")
                 self.callback_status_update(msg)
         else:
             if msg.cmd == CMDType.CONTROL_NEW or not msg.payload:
@@ -692,7 +692,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
 
     def clean_up_session(self):
         """Clean up session."""
-        self.debug(f"Cleaning up session.")
+        self.debug("Cleaning up session.")
         self.real_local_key = self.local_key
 
         if self.heartbeater:
@@ -721,7 +721,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
 
         try:
             await self.transport_write(enc_payload)
-        except (Exception, TimeoutError) as ee:  # pylint: disable=broad-except
+        except (Exception, TimeoutError):  # pylint: disable=broad-except
             return self.clean_up_session()
 
         while recv_retries:
@@ -975,7 +975,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
             if not isinstance(payload, str):
                 try:
                     payload = payload.decode()
-                except Exception as ex:
+                except Exception:
                     self.debug("payload was not string type and decoding failed")
                     return self.error_json(ERR_JSON, payload)
 
@@ -996,7 +996,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
         self.debug("Deciphered data = %r", payload)
         try:
             json_payload = json.loads(payload)
-        except Exception as ex:
+        except Exception:
             json_payload = self.error_json(ERR_JSON, payload)
 
             if "devid not" in payload:  # DeviceID Not found.
@@ -1031,7 +1031,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
             rkey = await self.exchange_quick(
                 MessagePayload(CMDType.SESS_KEY_NEG_START, self.local_nonce), 2
             )
-        except:
+        except Exception:
             # Device may instantly disconnect if we sent send wrong localkey.
             if not self.is_connected:
                 raise ConnectionAbortedError("Session key negotiation failed on step 1")
@@ -1108,7 +1108,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
     # adds protocol header (if needed) and encrypts
     def _encode_message(self, msg: MessagePayload):
         hmac_key = None
-        iv = None
+        # iv = None
         payload = msg.payload
         self.cipher = AESCipher(self.local_key)
 
@@ -1120,7 +1120,7 @@ class TuyaProtocol(asyncio.Protocol, ContextualLogger):
             self.debug("final payload for cmd %r: %r", msg.cmd, payload)
 
             if self.version >= 3.5:
-                iv = True
+                # iv = True
                 # seqno cmd retcode payload crc crc_good, prefix, iv
                 msg = TuyaMessage(
                     self.seqno,
@@ -1333,7 +1333,7 @@ async def connect(
         raise ex
     except (Exception, asyncio.CancelledError) as ex:
         raise ex
-    except:
-        raise Exception(f"The host refused to connect")
+    except Exception:
+        raise Exception("The host refused to connect")
 
     return protocol

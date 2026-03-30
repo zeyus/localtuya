@@ -11,7 +11,7 @@ from .config_flow import col_to_select
 
 import voluptuous as vol
 from homeassistant.components.remote import (
-    ATTR_ACTIVITY,
+    # ATTR_ACTIVITY,
     ATTR_COMMAND,
     ATTR_COMMAND_TYPE,
     ATTR_NUM_REPEATS,
@@ -109,7 +109,7 @@ def rf_decode_button(base64_code):
         jstr = base64.b64decode(base64_code)
         jdata: dict = json.loads(jstr)
         return jdata
-    except:
+    except (Exception,):
         return {}
 
 
@@ -213,7 +213,7 @@ class LocalTuyaRemote(LocalTuyaEntity, RemoteEntity):
         if not self._attr_is_on:
             raise ServiceValidationError(f"Remote {self.entity_id} is turned off")
 
-        now, timeout = 0, kwargs.get(ATTR_TIMEOUT, 30)
+        _, timeout = 0, kwargs.get(ATTR_TIMEOUT, 30)
 
         device = kwargs.get(ATTR_DEVICE)
         commands = kwargs.get(ATTR_COMMAND)
@@ -441,7 +441,7 @@ class LocalTuyaRemote(LocalTuyaEntity, RemoteEntity):
 
     def status_updated(self):
         """Device status was updated."""
-        state = self.dp_value(self._dp_id)
+        # state = self.dp_value(self._dp_id)
         if (dp_recv := self.dp_value(self._dp_recieve)) != self._last_code:
             self._last_code = dp_recv
             self._event.set()

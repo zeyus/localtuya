@@ -4,7 +4,7 @@ import logging
 import struct
 import hmac
 import binascii
-from hashlib import md5, sha256
+from hashlib import sha256
 from .const import Affix, MessagesFormat, TuyaHeader, TuyaMessage
 from .cipher import AESCipher
 
@@ -24,7 +24,7 @@ def pack_message(msg: TuyaMessage, hmac_key: bytes = None):
         header_fmt = MessagesFormat.HEADER_6699
         end_fmt = MessagesFormat.END_6699
         msg_len = len(msg.payload) + (struct.calcsize(end_fmt) - 4) + 12
-        if type(msg.retcode) == int:
+        if msg.retcode is int:
             msg_len += struct.calcsize(MessagesFormat.RETCODE)
         header_data = (msg.prefix, 0, msg.seqno, msg.cmd, msg_len)
     else:
@@ -37,7 +37,7 @@ def pack_message(msg: TuyaMessage, hmac_key: bytes = None):
 
     if msg.prefix == Affix.prefix_6699.value:
         cipher = AESCipher(hmac_key)
-        if type(msg.retcode) == int:
+        if msg.retcode is int:
             raw = struct.pack(MessagesFormat.RETCODE, msg.retcode) + msg.payload
         else:
             raw = msg.payload
@@ -148,7 +148,7 @@ def unpack_message(
                 tag=crc,
             )
             crc_good = True
-        except:
+        except Exception:
             crc_good = False
 
         retcode_len = struct.calcsize(MessagesFormat.RETCODE)
@@ -178,7 +178,9 @@ def parse_header(data: bytes, logger=_LOGGER):
     elif data[:4] == Affix.prefix_55aa.bin:
         fmt = MessagesFormat.HEADER_55AA
     else:
-        err = f"Prefix Does not match! {prefix} known {set(p for p in Affix.prefixes)}"
+        err = (
+            f"Prefix Does not match! {data[:4]} known {set(p for p in Affix.prefixes)}"
+        )
         logger.error(err)
         raise DecodeError(err)
 

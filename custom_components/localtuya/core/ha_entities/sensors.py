@@ -1,9 +1,9 @@
 """
-    This a file contains available tuya data
-    https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
+This a file contains available tuya data
+https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
 
-    Credits: official HA Tuya integration.
-    Modified by: xZetsubou
+Credits: official HA Tuya integration.
+Modified by: xZetsubou
 """
 
 from homeassistant.components.sensor import SensorStateClass, SensorDeviceClass
@@ -11,15 +11,12 @@ from homeassistant.const import (
     PERCENTAGE,
     UnitOfTime,
     UnitOfPower,
-    PERCENTAGE,
     UnitOfElectricCurrent,
     UnitOfElectricPotential,
-    UnitOfTime,
     CONF_UNIT_OF_MEASUREMENT,
     UnitOfTemperature,
     UnitOfEnergy,
     UnitOfVolume,
-    UnitOfElectricPotential,
     UnitOfMass,
     DEGREE,
     LIGHT_LUX,

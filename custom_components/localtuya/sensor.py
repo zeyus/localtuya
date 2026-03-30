@@ -9,7 +9,7 @@ import voluptuous as vol
 from homeassistant.components.sensor import (
     DEVICE_CLASSES_SCHEMA,
     DOMAIN,
-    STATE_CLASSES_SCHEMA,
+    # STATE_CLASSES_SCHEMA,
     SensorDeviceClass,
     SensorEntity,
     SensorStateClass,
@@ -17,8 +17,8 @@ from homeassistant.components.sensor import (
 from homeassistant.const import (
     CONF_DEVICE_CLASS,
     CONF_UNIT_OF_MEASUREMENT,
-    Platform,
-    STATE_UNKNOWN,
+    # Platform,
+    # STATE_UNKNOWN,
     UnitOfElectricCurrent,
     UnitOfElectricPotential,
     UnitOfPower,

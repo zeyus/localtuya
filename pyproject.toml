@@ -1,5 +1,5 @@
 [tool.black]
-target-version = ["py314"]
+target-version = ["py313"]
 include = 'custom_components/localtuya/.*\.py'
 
 [tool.codespell]
@@ -12,6 +12,11 @@ quiet-level = 3
 asyncio_default_fixture_loop_scope = "function"
 testpaths = ["tests"]
 asyncio_mode = "auto"
+pythonpath = [
+  ".",
+  "./custom_components",
+  "./custom_components/localtuya",
+]
 
 [tool.coverage.run]
 source = ["tests"]

@@ -341,16 +341,6 @@ class LocalTuyaLight(LocalTuyaEntity, LightEntity):
             )
 
     @property
-    def min_color_temp_kelvin(self):
-        """Return color temperature min kelvin."""
-        return self._min_color_temp_kelvin
-
-    @property
-    def max_color_temp_kelvin(self):
-        """Return color temperature max kelvin."""
-        return self._max_color_temp_kelvin
-
-    @property
     def effect(self):
         """Return the current effect for this light."""
         if self.is_scene_mode or self.is_music_mode:

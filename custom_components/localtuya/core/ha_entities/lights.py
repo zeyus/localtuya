@@ -1,14 +1,14 @@
 """
-    This a file contains available tuya data
-    https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
+This a file contains available tuya data
+https://developer.tuya.com/en/docs/iot/standarddescription?id=K9i5ql6waswzq
 
-    Credits: official HA Tuya integration.
-    Modified by: xZetsubou
+Credits: official HA Tuya integration.
+Modified by: xZetsubou
 """
 
 from typing import Any
 from .base import DPCode, LocalTuyaEntity, EntityCategory, CLOUD_VALUE
-from homeassistant.const import CONF_BRIGHTNESS, CONF_COLOR_TEMP, CONF_SCENE
+from homeassistant.const import CONF_BRIGHTNESS
 
 from ...const import (
     CONF_BRIGHTNESS_LOWER,

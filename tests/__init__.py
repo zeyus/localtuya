@@ -78,6 +78,7 @@ def create_entry(config: dict[str, dict[str, Any]]):
         "unique_id": None,
         "version": 1,
         "source": "user",
+        "subentries_data": None,
     }
 
 
