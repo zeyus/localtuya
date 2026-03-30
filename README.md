@@ -41,6 +41,8 @@ The Cloud API account configuration is not mandatory (LocalTuya can work also wi
 
 <details><summary> 𝐂𝐫𝐞𝐝𝐢𝐭𝐬 </summary>
 <p>
+
+[xZetsubou](https://github.com/xZetsubou) [merged from main](https://github.com/xZetsubou/hass-localtuya) at `v2025.11.0`.
     
 [rospogrigio](https://github.com/rospogrigio), the original maintainer of LocalTuya. This fork was created when the [upstream](https://github.com/rospogrigio/localtuya) version was at `v5.2.1`.
 
