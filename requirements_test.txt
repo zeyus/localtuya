@@ -4,7 +4,7 @@ flake8==3.9.2
 mypy==0.901
 pydocstyle==6.1.1
 pylint-strict-informational==0.1
-homeassistant==2026.3.4
+homeassistant==2026.2.3
 pylint==2.8.2
 pytest-asyncio
 pytest-cov
